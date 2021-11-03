@@ -39,14 +39,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
-      ),
       body: const Center(
         child: Text("Post vidéo"),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -56,7 +53,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add),
+            icon: Image.asset(
+              "assets/images/tiktok_add.png",
+              height: 25,
+            ),
             label: 'Add',
           ),
           BottomNavigationBarItem(
