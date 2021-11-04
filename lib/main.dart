@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:video_player/video_player.dart';
@@ -150,7 +150,7 @@ class _VideoWidgetState extends State<VideoWidget> {
     super.initState();
     _controller = VideoPlayerController.asset(videoURL)
       ..initialize().then((_) {
-        // _controller.play();
+        _controller.play();
         setState(() {});
       });
   }
@@ -237,8 +237,9 @@ class PostContent extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              Container(
                 width: 80,
+                padding: const EdgeInsets.only(bottom: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -330,10 +331,7 @@ class PostContent extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      color: Colors.purple,
-                      height: 80,
-                    ),
+                    const AnimatedLogo(),
                   ],
                 ),
               ),
@@ -341,6 +339,59 @@ class PostContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class AnimatedLogo extends StatefulWidget {
+  const AnimatedLogo({Key? key}) : super(key: key);
+
+  @override
+  _AnimatedLogoState createState() => _AnimatedLogoState();
+}
+
+class _AnimatedLogoState extends State<AnimatedLogo>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 4000),
+      vsync: this,
+    );
+    _controller.repeat();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (_, child) {
+        return Transform.rotate(
+          angle: _controller.value * 2 * math.pi,
+          child: child,
+        );
+      },
+      child: Container(
+        height: 45,
+        width: 45,
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          image: const DecorationImage(
+            image: AssetImage("assets/images/disc_icon.png"),
+          ),
+        ),
+        child: Image.asset('assets/images/tiktok_icon.png'),
+      ),
     );
   }
 }
