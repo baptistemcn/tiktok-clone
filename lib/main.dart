@@ -195,7 +195,46 @@ class PostContent extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: Container(color: Colors.red),
+                child: Container(
+                  padding: const EdgeInsets.all((10)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "@extremesports_95",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Goein full send in Squaw Valley. #snow @snowboarding # extremesports #sendit #winter',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: const [
+                          Icon(
+                            Icons.music_note,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          SizedBox(width: 5),
+                          Text(
+                            'Original Sound - extremesports_95',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ),
               Container(
                 width: 80,
