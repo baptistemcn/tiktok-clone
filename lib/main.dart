@@ -39,9 +39,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text("Post vidéo"),
-      ),
+      body: HomePage(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -77,6 +75,47 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         showUnselectedLabels: false,
         onTap: _onItemTapped,
       ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  HomePage({Key? key}) : super(key: key);
+
+  final List<Map> tiktokItems = [
+    {
+      "title": "1",
+      "color": Colors.red,
+    },
+    {
+      "title": "2",
+      "color": Colors.green,
+    },
+    {
+      "title": "3",
+      "color": Colors.blue,
+    },
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return CarouselSlider(
+      options: CarouselOptions(
+        height: double.infinity,
+        scrollDirection: Axis.vertical,
+        viewportFraction: 1,
+      ),
+      items: tiktokItems.map((i) {
+        return Builder(
+          builder: (BuildContext context) {
+            return Container(
+              color: i["color"],
+              child: Center(
+                child: Text("Text " + i["title"]),
+              ),
+            );
+          },
+        );
+      }).toList(),
     );
   }
 }
