@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: "Flutter Tiktok",
       debugShowCheckedModeBanner: false,
       home: MyStatefulWidget(),
@@ -43,11 +43,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       body: HomePage(),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
           ),
@@ -58,18 +58,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             label: 'Add',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.comment_outlined),
             label: 'Notifications',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xff141518),
+        backgroundColor: const Color(0xff141518),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
         showSelectedLabels: false,
