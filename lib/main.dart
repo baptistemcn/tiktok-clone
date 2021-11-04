@@ -236,15 +236,38 @@ class PostContent extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 80,
-                color: Colors.green,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                      color: Colors.blue,
+                    SizedBox(
                       height: 80,
+                      child: Stack(
+                        alignment: AlignmentDirectional.bottomCenter,
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 10),
+                            child: const CircleAvatar(
+                              radius: 25,
+                              backgroundImage:
+                                  AssetImage("assets/images/photo-5.jpeg"),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                              size: 15,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     Container(
                       color: Colors.teal,
