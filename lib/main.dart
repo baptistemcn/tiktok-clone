@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:video_player/video_player.dart';
@@ -269,17 +270,65 @@ class PostContent extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      color: Colors.teal,
+                    SizedBox(
                       height: 80,
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.favorite,
+                            color: Colors.white.withOpacity(0.85),
+                            size: 45,
+                          ),
+                          const Text(
+                            '25.0K',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                    Container(
-                      color: Colors.yellow,
+                    SizedBox(
                       height: 80,
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.comment,
+                            color: Colors.white.withOpacity(0.85),
+                            size: 45,
+                          ),
+                          const Text(
+                            '156',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                    Container(
-                      color: Colors.orange,
+                    SizedBox(
                       height: 80,
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.reply,
+                            color: Colors.white.withOpacity(0.85),
+                            size: 45,
+                          ),
+                          const Text(
+                            '123',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     Container(
                       color: Colors.purple,
