@@ -119,7 +119,8 @@ class HomePage extends StatelessWidget {
                 children: [
                   VideoWidget(
                     videoURL: i['videos'],
-                  )
+                  ),
+                  const PostContent(),
                 ],
               ),
             );
@@ -148,7 +149,7 @@ class _VideoWidgetState extends State<VideoWidget> {
     super.initState();
     _controller = VideoPlayerController.asset(videoURL)
       ..initialize().then((_) {
-        _controller.play();
+        // _controller.play();
         setState(() {});
       });
   }
@@ -156,5 +157,79 @@ class _VideoWidgetState extends State<VideoWidget> {
   @override
   Widget build(BuildContext context) {
     return VideoPlayer(_controller);
+  }
+}
+
+class PostContent extends StatelessWidget {
+  const PostContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 100,
+          padding: const EdgeInsets.only(top: 40),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                "Following",
+                style: TextStyle(
+                  color: Colors.white54,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(width: 20),
+              Text(
+                "For You",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Expanded(
+          child: Row(
+            children: [
+              Expanded(
+                child: Container(color: Colors.red),
+              ),
+              Container(
+                width: 80,
+                color: Colors.green,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      color: Colors.blue,
+                      height: 80,
+                    ),
+                    Container(
+                      color: Colors.teal,
+                      height: 80,
+                    ),
+                    Container(
+                      color: Colors.yellow,
+                      height: 80,
+                    ),
+                    Container(
+                      color: Colors.orange,
+                      height: 80,
+                    ),
+                    Container(
+                      color: Colors.purple,
+                      height: 80,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
