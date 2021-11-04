@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:video_player/video_player.dart';
 
 void main() {
   runApp(const MyApp());
@@ -84,16 +84,22 @@ class HomePage extends StatelessWidget {
 
   final List<Map> tiktokItems = [
     {
-      "title": "1",
-      "color": Colors.red,
+      "videos": "assets/videos/video_1.mp4",
     },
     {
-      "title": "2",
-      "color": Colors.green,
+      "videos": "assets/videos/video_2.mp4",
     },
     {
-      "title": "3",
-      "color": Colors.blue,
+      "videos": "assets/videos/video_3.mp4",
+    },
+    {
+      "videos": "assets/videos/video_4.mp4",
+    },
+    {
+      "videos": "assets/videos/video_5.mp4",
+    },
+    {
+      "videos": "assets/videos/video_6.mp4",
     },
   ];
   @override
@@ -108,14 +114,47 @@ class HomePage extends StatelessWidget {
         return Builder(
           builder: (BuildContext context) {
             return Container(
-              color: i["color"],
-              child: Center(
-                child: Text("Text " + i["title"]),
+              color: const Color(0xFF141518),
+              child: Stack(
+                children: [
+                  VideoWidget(
+                    videoURL: i['videos'],
+                  )
+                ],
               ),
             );
           },
         );
       }).toList(),
     );
+  }
+}
+
+class VideoWidget extends StatefulWidget {
+  const VideoWidget({Key? key, required this.videoURL}) : super(key: key);
+  final String videoURL;
+
+  @override
+  _VideoWidgetState createState() => _VideoWidgetState(this.videoURL);
+}
+
+class _VideoWidgetState extends State<VideoWidget> {
+  late VideoPlayerController _controller;
+  final String videoURL;
+  _VideoWidgetState(this.videoURL);
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = VideoPlayerController.asset(videoURL)
+      ..initialize().then((_) {
+        _controller.play();
+        setState(() {});
+      });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return VideoPlayer(_controller);
   }
 }
